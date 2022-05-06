@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Game.css"
 import { Link } from 'react-router-dom';
 
 export const Game = ({game}) => {
+
+  const [hideState, setHideState] = useState(false);
   
   console.log(game);
   const { id, name, released, background_image, rating, genres } = game;
 
   function handleHide() {
-    
+    setHideState(!hideState);
   }
 
     return (

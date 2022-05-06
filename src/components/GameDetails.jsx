@@ -27,8 +27,8 @@ export const GameDetails = () => {
             <img className='cover-img' src={background_image} alt={name} />
         </div>
         <h1>{name}</h1>
-        <h2>{released}</h2>
-        <h3>{rating}</h3>
+        <h2>Released : {released}</h2>
+        <h3>Rating : {rating}</h3>
 
     </div>
   )
