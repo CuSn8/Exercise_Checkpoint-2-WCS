@@ -7,6 +7,7 @@ import { useState } from "react";
 const GameList = () => {
 
     const [gameList, setGameList] = useState([]);
+    const [isFiltered, setIsFiltered] = useState(false);
 
     useEffect(() => {
         axios
@@ -17,8 +18,25 @@ const GameList = () => {
 
     console.log(gameList);
 
+    function handleClick() {
+      setIsFiltered(!isFiltered);
+    }
+    console.log(isFiltered);
+    console.log(gameList.filter((game) => {
+      return game.rating >= 4.5
+    }));
+
   return (
-    <h2>Hello</h2>
+    <div>
+      <button onClick={handleClick}>Show Best Games Only : {isFiltered ? "ON" : "OFF"}</button>
+      <div>{isFiltered ? gameList.filter((game) => {
+        return game.rating >= 4.5
+      }).map((item) => {
+        return <Game game={item} />}) : gameList.map((item, index) => {
+       return <Game game={gameList[index]} />
+      })}
+      </div>
+    </div>
   )
 }
 export default GameList;
